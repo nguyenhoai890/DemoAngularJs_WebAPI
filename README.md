@@ -2,19 +2,21 @@
 The demo for angularjs with web api.
 
 # UserManagement 
-WebAPI project
-*Please open by visual studio to run the web api.
+##WebAPI project
+
+* Please open by visual studio to run the web api.
 
 
-#UserManagementSPA
-Single Page Application
+##UserManagementSPA
 
-## Dependencies
+* Single Page Application
+
+### Dependencies
 
 * `node` and `npm`
 * Ensure you're running Node (`v4.1.x`+) and NPM (`2.14.x`+)
 
-## Config
+### Config
 
 * The webapp only use url for user api. Config URL:
 * .\src\app\config.js
@@ -23,13 +25,13 @@ Single Page Application
 * The full URL =  this.web_api_url + this.restful_user_api
 
 
-## Installing
+### Installing
 npm install 
 
-## Build the app
+### Build the app
 npm run build
 
-## Run the app
+### Run the app
 npm start
 
 
