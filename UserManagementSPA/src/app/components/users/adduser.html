@@ -1,0 +1,38 @@
+<div class="row">
+        <div class="col-md-8 mx-auto">
+            <h2>{{title}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <form name="userForm" id="formUser" class="mx-auto form-group col-lg-8" ng-submit="submitAddUserForm(userForm.$valid)" novalidate>
+            <div class="form-group row">
+                <label for="userName" class="col-lg-2 col-form-label">Name*:</label>
+                <input type="text"
+                       id="userName"
+                       class="form-control col-lg-5"
+                       name="name" ng-model="user.Name" ng-maxlength="50" required />
+                <span ng-show="userForm.name.$error.required && !userForm.name.$pristine" class="text-danger col-form-label col-lg-5">User's name is required.</span>
+                <span ng-show="userForm.name.$error.maxlength" class="text-danger col-form-label col-lg-5">User's name is too long.</span>
+            </div>
+            <div class="form-group row">
+                <label for="userAge" class="col-lg-2 col-form-label">Age*:</label>
+                <input type="number" min="1" max="999"
+                       id="userAge"
+                       class="form-control col-lg-5"
+                       name="age" ng-model="user.Age" required />
+                <span ng-show="(userForm.age.$error.required || userForm.age.$error.number) && !userForm.age.$pristine" class="text-danger col-form-label col-lg-5">User's age is number and be required.</span>
+                <span ng-show="userForm.age.$error.max || userForm.age.$error.min" class="text-danger col-form-label col-lg-5">User's age should be between 1 to 999.</span>
+                <!--{{userForm.age.$error}}-->
+            </div>
+            <div class="form-group row">
+                <label for="userAddress" class="col-lg-2 col-form-label">Address:</label>
+                <input type="text" id="userAddress" name="address" ng-model="user.Address" ng-maxlength="50" class="form-control col-lg-5" />
+                <span ng-show="userForm.address.$error.maxlength" class="text-danger col-form-label col-lg-5">Address is too long</span>
+            </div>
+            <div class="form-group row" ng-show="haveMessage">
+                <span class="text-success col-form-label col-lg-12">{{formMessage}}</span>
+            </div>
+            <button ui-sref="users" type="button" class="btn btn-info">List User</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>

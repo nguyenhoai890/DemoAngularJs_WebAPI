@@ -1,0 +1,9 @@
+./UserManagementSPA/node_modules
+./UserManagementSPA/dist
+./UserManagementSPA/coverage
+.vs/
+packages/
+UserManagementSPA/node_modules/
+UserManagement/obj/
+UserManagement/bin/
+UserManagementSPA/dist/

@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>{{title}}</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td colspan="4">
+                        Search (Name):
+                        <input type="text" ng-model="filter.Name" />
+                    </td>
+                    <td>
+                        <button ui-sref="usersadd" type="button" class="btn btn-info">Add User</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Id
+                    </td>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        Age
+                    </td>
+                    <td>
+                        Address
+                    </td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users| filter:filter">
+                    <td>{{user.Id}}</td>
+                    <td>{{user.Name}}</td>
+                    <td>{{user.Age}}</td>
+                    <td>{{user.Address}}</td>
+                    <td>
+                        <!--<button data-ui-stage="usersdetail" data-ui-state-params="{'Id':{{user.Id}}}" type="button" class="btn btn-info">Info</button>-->
+                        <button ui-sref="usersdetail({id: {{user.Id}}})" type="button" class="btn btn-info">Info</button>
+                        ||
+                        <button ng-click="DeleteUser(user.Id)" type="button" class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
