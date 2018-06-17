@@ -2,12 +2,12 @@
 The demo for angularjs with web api.
 
 # UserManagement 
-##WebAPI project
+## WebAPI project
 
 * Please open by visual studio to run the web api.
 
 
-##UserManagementSPA
+## UserManagementSPA
 
 * Single Page Application
 
