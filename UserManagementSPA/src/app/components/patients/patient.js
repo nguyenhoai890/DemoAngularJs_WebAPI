@@ -15,13 +15,9 @@ import template_patientdetail from './patientdetail.html';
 class PatientController {
     constructor($log, $scope, AppService) {
         //debugger;
-        console.log($scope);
         this.title = 'Patients';
-        console.log($scope)
         $scope.$on('eventListPatient', function (event, data) {
             $scope.title = "List Patients";
-            console.log(event);
-            console.log(data);
             AppService.getAllPatient().then(
                 function (response) {
                     $scope.patients = response.data;
@@ -53,7 +49,8 @@ class PatientController {
             var patientId = data.id;
             AppService.getPatientDetailById(patientId).then(
                 function (response) {
-                    $scope.Patient = response.data;
+                    $scope.PatientData = response.data;
+                    console.log($scope.PatientData);
                 }
             );
         });
@@ -148,7 +145,6 @@ class PatientController {
             url: "/patients/:id",
             template: "<patientdetail></patientdetail>",
             onEnter: function ($rootScope, $timeout, $stateParams) {
-                debugger;
                 $timeout(function () {
                     $rootScope.$broadcast('eventPatientDetail', $stateParams);
                 })

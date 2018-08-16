@@ -14,11 +14,11 @@ class AppService {
     getAllPatient()
     {//https://medimedservice.azurewebsites.net/api/GetPatients?&code=YPVY0KSyT2WOpnco0Lee/oJaygivkMy6FetpnW17B6I5bD0CigSpLw==
         //return this.$http.get(this.patientsURL+'/GetPatients?&code=A7zA5yXVn1tjaZgcfJpYFtBBa1zrZ4T89Nmifqd7PJTtS0Hx5JTo9g==');
-        return this.$http.get(this.patientsURL+'http://loca/GetPatients?&code=A7zA5yXVn1tjaZgcfJpYFtBBa1zrZ4T89Nmifqd7PJTtS0Hx5JTo9g==');
+        return this.$http.get(this.patientsURL+'/GetPatients?&code=A7zA5yXVn1tjaZgcfJpYFtBBa1zrZ4T89Nmifqd7PJTtS0Hx5JTo9g==');
     }
-    getPatientDetailById()
+    getPatientDetailById(id)
     {
-        
+        return this.$http.get(this.patientsURL+'/GetPatientDetail?id='+id+'&code=A7zA5yXVn1tjaZgcfJpYFtBBa1zrZ4T89Nmifqd7PJTtS0Hx5JTo9g==');
     };
     post(Model) {
         var request = this.$http({

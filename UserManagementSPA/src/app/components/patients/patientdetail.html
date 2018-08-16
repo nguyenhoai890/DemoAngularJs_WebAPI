@@ -5,35 +5,88 @@
     </div>
     <div class="row">
         <form name="userForm" id="formUser" class="form-group col-lg-8" ng-submit="submitUpdateUserForm(userForm.$valid)" novalidate>
-            <input type="hidden" ng-model="user.Id" />
             <div class="form-group row">
-                <label for="userName" class="col-lg-2 col-form-label">Name*:</label>
+                <label for="firstname" class="col-lg-2 col-form-label">First Name:</label>
                 <input type="text"
-                       id="userName"
+                       disabled=true
+                       id="firstname"
                        class="form-control col-lg-5"
-                       name="name" ng-model="user.Name" ng-maxlength="50" required />
-                <span ng-show="userForm.name.$error.required && !userForm.name.$pristine" class="text-danger col-form-label col-lg-5">User's name is required.</span>
-                <span ng-show="userForm.name.$error.maxlength" class="text-danger col-form-label col-lg-5">User's name is too long.</span>
+                       name="name" ng-model="PatientData.patient.firstName"/>               
             </div>
             <div class="form-group row">
-                <label for="userAge" class="col-lg-2 col-form-label">Age*:</label>
-                <input type="number" min="1" max="999"
-                       id="userAge"
+                <label for="lastname" class="col-lg-2 col-form-label">First Name:</label>
+                <input type="text"
+                       disabled=true
+                       id="lastname"
                        class="form-control col-lg-5"
-                       name="age" ng-model="user.Age" required />
-                <span ng-show="(userForm.age.$error.required || userForm.age.$error.number) && !userForm.age.$pristine" class="text-danger col-form-label col-lg-5">User's age is number and be required.</span>
-                <span ng-show="userForm.age.$error.max || userForm.age.$error.min" class="text-danger col-form-label col-lg-5">User's age should be between 1 to 999.</span>
-                <!--{{userForm.age.$error}}-->
+                       name="lastname" ng-model="PatientData.patient.lastName"/>               
             </div>
             <div class="form-group row">
-                <label for="userAddress" class="col-lg-2 col-form-label">Address:</label>
-                <input type="text" id="userAddress" name="address" ng-model="user.Address" ng-maxlength="50" class="form-control col-lg-5" />
-                <span ng-show="userForm.address.$error.maxlength" class="text-danger col-form-label col-lg-5">Address is too long</span>
+                <label for="gender" class="col-lg-2 col-form-label">Gender:</label>
+                <input type="text"
+                       disabled=true
+                       id="gender"
+                       class="form-control col-lg-5"
+                       name="gender" ng-model="PatientData.patient.gender"/>
             </div>
-            <div class="form-group row" ng-show="haveMessage">
-                <span class="text-success col-form-label col-lg-12">{{formMessage}}</span>
+            <div class="form-group row">
+                <label for="occupation" class="col-lg-2 col-form-label">Occupation:</label>
+                <input type="text"
+                       disabled=true
+                       id="occupation"
+                       class="form-control col-lg-5"
+                       name="occupation" ng-model="PatientData.patient.occupation"/>
             </div>
-            <button ui-sref="users" type="button" class="btn btn-info">List User</button>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <br/>
+            <h3>Measure Records:</h3>
+            <div class="tablecontainer row">
+                <div class="col-lg-12">
+                    <div class="row measurerecordheader">
+                            <div class="col-lg-3">MeasureType</div>
+                            <div class="col-lg-2">Result</div>
+                            <div class="col-lg-3">Note</div>
+                            <div class="col-lg-4">Date</div>
+                    </div>
+                    <div class="row measurerecorddetailheader">
+                            <div class="col-lg-4">Record Type</div>
+                            <div class="col-lg-4">Value</div>
+                            <div class="col-lg-4">Unit</div>
+                    </div>
+                    <div class="row measuredetailcontainer" ng-repeat="measure in PatientData.measureDetails">
+                        <div class="col-lg-12">                                
+                            <div class="row measurerecord">
+                                <div class="col-lg-3">{{measure.MeasureRecord.measureTypeName}}</div>
+                                <div class="col-lg-2">{{measure.MeasureRecord.recordResult}}</div>
+                                <div class="col-lg-3">{{measure.MeasureRecord.recordNote}}</div>
+                                <div class="col-lg-4">{{measure.MeasureRecord.createdDate}}</div>
+                            </div>
+                            <div class="row measurerecorddetail" ng-repeat="record in measure.MeasureRecordDetails">
+                                    <div class="col-lg-4">{{record.recordType}}</div>
+                                    <div class="col-lg-4">{{record.recordValue}}</div>
+                                    <div class="col-lg-4">{{record.recordUnit}}</div>
+                            </div>
+                        </div>                                                        
+                    </div>
+                </div>
+            </div>          
+            
+            <button ui-sref="patients" type="button" class="btn btn-info">List Patients</button>
+            <!-- <button type="submit" class="btn btn-primary">Save</button> -->
         </form>
     </div>
+    <style>
+    .measurerecordheader{
+        background-color: cornflowerblue;
+        font-weight: bolder;
+    }
+    .measurerecorddetailheader
+    {
+        background-color: cornsilk;
+        font-weight: bolder;
+    }
+    .measuredetailcontainer
+    {
+        border: 1px solid;
+        margin-bottom: 4px;
+    }
+    </style>
