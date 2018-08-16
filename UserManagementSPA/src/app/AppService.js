@@ -4,17 +4,26 @@ class AppService {
     constructor($http) {
       this.$http = $http;
       let config = new appConfig();
-      this.usersURL = config.getURL();
+      this.patientsURL = config.getURL();
       
     };
     getAll()
     {
-        return this.$http.get(this.usersURL);
+        return this.$http.get(this.patientsURL)+'/GetPatients';
+    };
+    getAllPatient()
+    {//https://medimedservice.azurewebsites.net/api/GetPatients?&code=YPVY0KSyT2WOpnco0Lee/oJaygivkMy6FetpnW17B6I5bD0CigSpLw==
+        //return this.$http.get(this.patientsURL+'/GetPatients?&code=A7zA5yXVn1tjaZgcfJpYFtBBa1zrZ4T89Nmifqd7PJTtS0Hx5JTo9g==');
+        return this.$http.get(this.patientsURL+'http://loca/GetPatients?&code=A7zA5yXVn1tjaZgcfJpYFtBBa1zrZ4T89Nmifqd7PJTtS0Hx5JTo9g==');
+    }
+    getPatientDetailById()
+    {
+        
     };
     post(Model) {
         var request = this.$http({
             method: "post",
-            url: this.usersURL,
+            url: this.patientsURL,
             data: Model
         });
         return request;
@@ -22,23 +31,24 @@ class AppService {
     put(Model) {
         var request = this.$http({
             method: "put",
-            url: this.usersURL,
+            url: this.patientsURL,
             data: Model
         });
         return request;
     };
-    delete(userId) {
+    delete(patientId) {
         var request = this.$http({
             method: "delete",
-            url: this.usersURL + '/' + userId
+            url: this.patientsURL + '/' + patientId
         });
         return request;
     };
     getAll () {
-        return this.$http.get(this.usersURL);
+        debugger;
+        return this.$http.get(this.patientsURL)+'/GetPatients';
     };
-    getbyID(userId) {
-        return this.$http.get(this.usersURL + '/' + userId);
+    getbyID(patientId) {
+        return this.$http.get(this.patientsURL + '/' + patientId);
     };
   }
   AppService.$inject = ['$http'];

@@ -2,7 +2,7 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
 import home from './components/home/home';
-import users from './components/users/user';
+import patients from './components/patients/patient';
 import AppService from './AppService.js';
 import appConfig from './config.js'
 
@@ -33,13 +33,13 @@ const MODULE_NAME = 'app';
 angular
 .module(MODULE_NAME, [
   home,
-  users
+  patients
 ])
 .service('AppService',AppService)
 .component('app', appDirective)
 .run(function run($rootScope) {
   $rootScope.WebServiceUrl = appConfig.web_api_url;
-  $rootScope.UserAPI = appConfig.restful_user_api;
+  $rootScope.PatientAPI = appConfig.restful_patient_api;
 });;
 
 export default MODULE_NAME;

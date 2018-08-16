@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>{{title}}</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td colspan="4">
+                        Search (Name):
+                        <input type="text" ng-model="query" />
+                    </td>
+                    <td>
+                        <!-- <button ui-sref="patientsadd" type="button" class="btn btn-info">Add Patient</button> -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Id
+                    </td>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        Date Of Birthday
+                    </td>
+                    <td>
+                        Occupation
+                    </td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="patient in patients| filter:search">
+                        <!-- //in demo we use id on android device -->
+                    <td>{{patient.patientId}}</td> 
+                    <td>{{patient.firstName + patient.lastName}}</td>
+                    <td>{{patient.dob}}</td>
+                    <td>{{patient.occupation}}</td>
+                    <td>
+                        <!--<button data-ui-stage="patientsdetail" data-ui-state-params="{'Id':{{patient.Id}}}" type="button" class="btn btn-info">Info</button>-->
+                        <button ui-sref="patientsdetail({id:'{{patient.patientId}}'})" type="button" class="btn btn-info">Info</button>
+                        <!-- ||
+                        <button ng-click="DeletePatient(patient.id)" type="button" class="btn btn-danger">Delete</button> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
